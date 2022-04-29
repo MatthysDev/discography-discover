@@ -1,0 +1,18 @@
+<form [formGroup]="kindForm" (ngSubmit)="onSubmitKind(kindForm.value)">
+    <h2 mat-dialog-title>{{formAction}} FORM</h2>
+    <mat-dialog-content class="mat-typography">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Fantastic" type="text" formControlName="name" required>
+                <mat-icon zmatPrefix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button type="submit" cdkFocusInitial [disabled]="!kindForm.valid">{{formAction}}</button>
+    </mat-dialog-actions>
+
+</form>

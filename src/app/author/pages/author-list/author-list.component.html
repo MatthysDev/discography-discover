@@ -1,0 +1,47 @@
+<br>
+<mat-card>
+    <table mat-table [dataSource]="authors$ | async" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let author">{{ author.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <th mat-cell *matHeaderCellDef>First Name</th>
+            <td mat-cell *matCellDef="let author">{{ author.firstName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+            <th mat-cell *matHeaderCellDef>Last Name</th>
+            <td mat-cell *matCellDef="let author">{{ author.lastName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="birthDay">
+            <th mat-cell *matHeaderCellDef>birthDay</th>
+            <td mat-cell *matCellDef="let author">{{ author.birthDay | date:'d/M/Y' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+            <th mat-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let author">
+                <button mat-icon-button (click)="openDialogAuthor(true, author)">
+                    <mat-icon color="primary">edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let author">
+                <button mat-icon-button (click)="delete(author)">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</mat-card>
+<br>
+<button mat-fab color="white" (click)="openDialogAuthor(false, undefined)">
+    <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,53 @@
+<form [formGroup]="authorForm" (ngSubmit)="onSubmitAuthor(authorForm.value)">
+  <h2 mat-dialog-title>{{ formAction }} author</h2>
+  <mat-dialog-content class="mat-typography">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Artist Name</mat-label>
+        <input
+          matInput
+          placeholder="Fantastic"
+          type="text"
+          formControlName="firstName"
+          required
+        />
+        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input
+          matInput
+          placeholder="Fantastic"
+          type="text"
+          formControlName="lastName"
+          required
+        />
+        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Birth Day</mat-label>
+        <input
+          matInput
+          placeholder="Fantastic"
+          type="Date"
+          formControlName="birthDay"
+          required
+        />
+        <mat-icon matPrefix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-button
+      type="submit"
+      cdkFocusInitial
+      [disabled]="!authorForm.valid"
+    >
+      {{ formAction }}
+    </button>
+  </mat-dialog-actions>
+</form>
